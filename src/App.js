@@ -1,45 +1,65 @@
 import React from 'react'
-import {useState} from 'react'
+import {useState,useEffect} from 'react'
 import Header from './Components/Header'
 import Projects from './Components/Projects'
 import AddProject from './Components/AddProject'
 
 const App = () => {
 
-const [projects, setProjects] = useState([
-  {
-    id:1,
-    name:'Build 10 micro react apps in 2 days',
-    deadline:'By Feb 7th 2020',
-    done:true
-  },
-  {
-    id:2,
-    name:'Sign up for Ecommerce class',
-    deadline:'By Feb 7th 2020',
-    done:false
-  },
-  {
-    id:3,
-    name:'Build a portfolio',
-    deadline:'By Feb 28th 2020',
-    done:false
-  },
-  {
-    id:4,
-    name:'Get a job',
-    deadline:'By March 30th 2020',
-    done:false
-  }
-])
+const [projects, setProjects] = useState([])
 
 let [showForm,setShowForm] = useState(true);
 
+
+useEffect(() => {
+  const getProjects = async () => {
+    const projects = await fetchProjects();
+    setProjects(projects);
+  }
+  getProjects();
+
+  const getProject = async () => {
+    const project = await fetchProject(2);
+    console.log(project);
+  }
+  getProject();
+},[])
+
+// fetch projects
+const fetchProjects = async () => {
+  const res = await fetch('http://localhost:5000/projects');
+  const data = await res.json();
+  return data
+}
+
+// fetch project
+const fetchProject = async (id) => {
+const res = await fetch(`http://localhost:5000/projects/${id}`)
+const data = await res.json()
+return data;
+}
+
+
+
+
 // Add project
-const addProject = (project,deadline) => {
-  const id = Math.floor(Math.random() * 1000) + 1;
-  const newProject = {id:id,name:project,deadline:deadline,done:false};
+const addProject = async (project,deadline) => {
+  const newProject = {name:project,deadline:deadline,done:false};
+
+  const res = await fetch('http://localhost:5000/projects',{
+    method:'POST',
+    headers:{'Content-type':'application/json'},
+    body:JSON.stringify(newProject)
+  })
+
+  const data = await res.json();
+
   setProjects([...projects,newProject]);
+
+
+  // const id = Math.floor(Math.random() * 1000) + 1;
+  // const newProject = {id:id,name:project,deadline:deadline,done:false};
+  // setProjects([...projects,newProject]);
 }
 
 // Update form status
@@ -49,22 +69,34 @@ const toggleForm = () => {
 }
 
 // Remove project
-const removeProject = (id) => {
+const removeProject = async (id) => {
+  await fetch(`http://localhost:5000/projects/${id}`,{
+      method:'DELETE'
+    })
   setProjects(projects.filter(project => project.id !== id ));
-  
   }
 
- // Update project status
- 
- const updStatus = (id) => {
-  setProjects(projects.map(project => project.id === id ? {...project,done:!project.done} : project))
+
+
+ // Update project status 
+ const updStatus = async (id) => {
+   const projectToUpdate = await fetchProject(id);
+   const updatedProject = {...projectToUpdate,done:!projectToUpdate.done};
+   const res = await fetch(`http://localhost:5000/projects/${id}`,{
+     method:'PUT',
+     headers:{'Content-type':'application/json'},
+     body:JSON.stringify(updatedProject)
+   })
+   const data = await res.json();
+
+  setProjects(projects.map(project => project.id === id ? {...project,done:data.done} : project))
  }
 
   return (
     <div className="container">
-      <Header toggleForm={toggleForm}/>
+      <Header toggleForm={toggleForm} showForm={showForm}/>
       <AddProject showForm={showForm} addProject={addProject}/>
-      <Projects projects={projects} onRemove={removeProject} onUpdate={updStatus}/>
+      {projects.length > 0 ? <Projects projects={projects} onRemove={removeProject} onUpdate={updStatus}/> : <h3 style={{textAlign:'center'}}>No projects to display.Please add.</h3>}
     </div>
   )
 }

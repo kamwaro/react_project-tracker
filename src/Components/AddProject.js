@@ -8,6 +8,10 @@ const AddProject = ({showForm,addProject}) => {
 
     const onSubmit = (e) => {
         e.preventDefault();
+
+        if(!newProject || !deadline){
+            return;
+        }
         console.log({newProject:newProject,deadline:deadline});
 
         addProject(newProject,deadline);

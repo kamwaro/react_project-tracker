@@ -10,11 +10,12 @@ font-family: 'Nunito', sans-serif;
 
 .container{
     background-color:#ffff;
-    color: #fff;
+    color: #000;
     max-width: 50%;
     margin:20px auto;
     padding: 1em 2em;
     border-radius: 5px;
+    
 }
 .header{
     display: flex;
@@ -35,6 +36,15 @@ font-family: 'Nunito', sans-serif;
     text-decoration: none;
     font-size: 15px;
     font-family: inherit;
+}
+
+.btnClose{
+    background-color: red;
+    color: #000;
+}
+
+.btnOpen{
+    background-color: green;
 }
 
 .project{

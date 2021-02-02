@@ -1,0 +1,34 @@
+{
+  "projects": [
+    {
+      "id": 1,
+      "name": "Build 10 micro react apps in 2 days",
+      "deadline": "By Feb 7th 2020",
+      "done": true
+    },
+    {
+      "id": 2,
+      "name": "Sign up for Ecommerce class",
+      "deadline": "By Feb 7th 2020",
+      "done": false
+    },
+    {
+      "id": 3,
+      "name": "Build a portfolio",
+      "deadline": "By Feb 28th 2020",
+      "done": false
+    },
+    {
+      "id": 4,
+      "name": "Get a job",
+      "deadline": "By March 30th 2020",
+      "done": false
+    },
+    {
+      "name": "Practice Async Await",
+      "deadline": "By Feb 5th 2020",
+      "done": false,
+      "id": 5
+    }
+  ]
+}
