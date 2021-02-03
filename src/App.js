@@ -68,6 +68,38 @@ const toggleForm = () => {
   setShowForm(showForm  = !showForm);
 }
 
+// Update love Counts;
+
+const updLoveCounts = async (id) => {
+  const projectToUpdate = await fetchProject(id);
+  const updData = {...projectToUpdate,loveCounts:projectToUpdate.loveCounts + 1};
+  const res = await fetch(`http://localhost:5000/projects/${id}`,{
+    method:'PUT',
+    headers:{
+      'Content-type':'application/json'
+    },
+    body:JSON.stringify(updData)
+  })
+  const data = await res.json();
+  setProjects(projects.map(project => project.id === id ? {...project,loveCounts:data.loveCounts} : project))
+}
+
+// Update hate Counts;
+
+const updHateCounts = async (id) => {
+  const projectToUpdate = await fetchProject(id);
+  const updData = {...projectToUpdate,hateCounts:projectToUpdate.hateCounts + 1};
+  const res = await fetch(`http://localhost:5000/projects/${id}`,{
+    method:'PUT',
+    headers:{
+      'Content-type':'application/json'
+    },
+    body:JSON.stringify(updData)
+  })
+  const data = await res.json();
+  setProjects(projects.map(project => project.id === id ? {...project,hateCounts:data.hateCounts} : project))
+}
+
 // Remove project
 const removeProject = async (id) => {
   await fetch(`http://localhost:5000/projects/${id}`,{
@@ -96,7 +128,7 @@ const removeProject = async (id) => {
     <div className="container">
       <Header toggleForm={toggleForm} showForm={showForm}/>
       <AddProject showForm={showForm} addProject={addProject}/>
-      {projects.length > 0 ? <Projects projects={projects} onRemove={removeProject} onUpdate={updStatus}/> : <h3 style={{textAlign:'center'}}>No projects to display.Please add.</h3>}
+      {projects.length > 0 ? <Projects projects={projects} onRemove={removeProject} onUpdate={updStatus} updLoveCounts={updLoveCounts} updHateCounts={updHateCounts}/> : <h3 style={{textAlign:'center'}}>No projects to display.Please add.</h3>}
     </div>
   )
 }

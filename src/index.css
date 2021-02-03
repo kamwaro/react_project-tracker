@@ -133,13 +133,23 @@ font-size: 1rem;
     transition: max-height 4s ease;
 }
 
-[dataTooltip]:before {            
-    position : absolute;
-     content : attr(data-tooltip);
-     opacity : 0;
+.likehateBtn{
+    position:'relative';
+    padding:'9px';
+    margin-right: 10px;
 }
 
-[dataTooltip]:hover:before {        
-    opacity : 1;
+.loveCounts{
+    position:'absolute';
+    color:'green';
+    font-size:'0.8rem';
+    
 }
-
+.heartBtn{
+  border: none;
+}
+.hateCounts{
+    color:'red';
+    font-size:'0.8rem';
+    position:'absolute';
+}

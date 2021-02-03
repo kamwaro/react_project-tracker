@@ -1,14 +1,11 @@
 import React from 'react'
 import { FaTimes ,FaHandMiddleFinger,FaHeart} from 'react-icons/fa';
-import {useState} from 'react'
 
 
 
 
-const Project = ({project, onRemove,onUpdate}) => {
-    const [loveCounts,setLoveCounts] = useState(0);
-    const [hateCounts,setHaterCounts] = useState(0);
-    let {id,name,deadline,done} = project
+const Project = ({project, onRemove,onUpdate,updLoveCounts,updHateCounts}) => {
+    let {id,name,deadline,done,loveCounts,hateCounts} = project
     return (
         <div className='project' style={{borderTop: done ? '5px solid green' : '' }} >
             <div onDoubleClick={() => onUpdate(id)}>
@@ -18,12 +15,12 @@ const Project = ({project, onRemove,onUpdate}) => {
             </div>
             
             <div >
-            <span style={{position:'relative',padding:'9px'}}>
-            <button className='heartBtn' onClick={e => {e.preventDefault(); setLoveCounts(loveCounts + 1)}}>{<FaHeart />}</button>
-            <span style={{position:'absolute',color:'green',fontSize:'0.8rem'}}>{loveCounts}</span>
+            <span className='likehateBtn'>
+            <button className='heartBtn' onClick={() => updLoveCounts(id) }>{<FaHeart />}</button>
+            <span className='loveCounts' style={{position:'absolute',color:'green',fontSize:'0.8rem'}}>{loveCounts}</span>
             </span>
-            <span style={{position:'relative',padding:'9px'}}>
-            <button onClick={e => {e.preventDefault(); setHaterCounts(hateCounts + 1) }}>
+            <span  className='hateCounts' >
+            <button className='heartBtn' onClick={() => updHateCounts(id)}>
             {<FaHandMiddleFinger/>}
             </button>
             <span style={{color:'red',fontSize:'0.8rem',position:'absolute'}} >{hateCounts}</span>

@@ -4,37 +4,73 @@
       "id": 1,
       "name": "Build 10 micro react apps in 2 days",
       "deadline": "By Feb 7th 2020",
-      "done": false
+      "done": true,
+      "loveCounts": 8,
+      "hateCounts": 8
     },
     {
       "id": 3,
       "name": "Build a portfolio",
       "deadline": "By Feb 28th 2020",
-      "done": true
+      "done": false,
+      "loveCounts": 0,
+      "hateCounts": 0
     },
     {
       "id": 4,
       "name": "Get a job",
       "deadline": "By March 30th 2020",
-      "done": false
+      "done": false,
+      "loveCounts": 0,
+      "hateCounts": 0
     },
     {
       "name": "Practice Async Await",
       "deadline": "By Feb 5th 2020",
-      "done": false,
-      "id": 5
+      "done": true,
+      "id": 5,
+      "loveCounts": 0,
+      "hateCounts": 0
     },
     {
       "name": "Learn how to use a tooltip",
       "deadline": "In 30 minutes",
       "done": false,
-      "id": 6
+      "id": 6,
+      "loveCounts": 0,
+      "hateCounts": 0
     },
     {
       "name": "Add pagination to the next project",
       "deadline": "By Friday ",
       "done": false,
-      "id": 7
+      "id": 7,
+      "loveCounts": 0,
+      "hateCounts": 0
+    },
+    {
+      "name": "Start learning Redux",
+      "deadline": "By Feb 10th 2020",
+      "done": false,
+      "id": 8,
+      "loveCounts": 0,
+      "hateCounts": 0
+    },
+    {
+      "name": "Master React Routing",
+      "deadline": "By Feb 3rd 2021",
+      "done": false,
+      "id": 9,
+      "loveCounts": 0,
+      "hateCounts": 0
+    },
+    {
+      "name": "Add Comments feature",
+      "deadline": "By Feb 4th",
+      "done": false,
+      "id": 10,
+      "loveCounts": 0,
+      "hateCounts": 0
     }
   ]
 }
