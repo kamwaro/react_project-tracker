@@ -4,19 +4,13 @@
       "id": 1,
       "name": "Build 10 micro react apps in 2 days",
       "deadline": "By Feb 7th 2020",
-      "done": true
-    },
-    {
-      "id": 2,
-      "name": "Sign up for Ecommerce class",
-      "deadline": "By Feb 7th 2020",
       "done": false
     },
     {
       "id": 3,
       "name": "Build a portfolio",
       "deadline": "By Feb 28th 2020",
-      "done": false
+      "done": true
     },
     {
       "id": 4,
@@ -29,6 +23,18 @@
       "deadline": "By Feb 5th 2020",
       "done": false,
       "id": 5
+    },
+    {
+      "name": "Learn how to use a tooltip",
+      "deadline": "In 30 minutes",
+      "done": false,
+      "id": 6
+    },
+    {
+      "name": "Add pagination to the next project",
+      "deadline": "By Friday ",
+      "done": false,
+      "id": 7
     }
   ]
 }

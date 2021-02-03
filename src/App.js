@@ -54,7 +54,7 @@ const addProject = async (project,deadline) => {
 
   const data = await res.json();
 
-  setProjects([...projects,newProject]);
+  setProjects([...projects,data]);
 
 
   // const id = Math.floor(Math.random() * 1000) + 1;
