@@ -3,6 +3,9 @@ import {useState,useEffect} from 'react'
 import Header from './Components/Header'
 import Projects from './Components/Projects'
 import AddProject from './Components/AddProject'
+import MessageProject from './Components/MessageProject'
+import {Route} from 'react-router-dom';
+import About from './Components/About'
 
 const App = () => {
 
@@ -14,28 +17,25 @@ let [showForm,setShowForm] = useState(true);
 useEffect(() => {
   const getProjects = async () => {
     const projects = await fetchProjects();
+    console.log(projects);
     setProjects(projects);
   }
   getProjects();
-
-  const getProject = async () => {
-    const project = await fetchProject(2);
-    console.log(project);
-  }
-  getProject();
 },[])
 
 // fetch projects
 const fetchProjects = async () => {
   const res = await fetch('http://localhost:5000/projects');
   const data = await res.json();
+
   return data
 }
 
 // fetch project
 const fetchProject = async (id) => {
-const res = await fetch(`http://localhost:5000/projects/${id}`)
-const data = await res.json()
+// const res = await fetch(`http://localhost:5000/projects/${id}`)
+// const data = await res.json()
+const data =projects
 return data;
 }
 
@@ -44,7 +44,7 @@ return data;
 
 // Add project
 const addProject = async (project,deadline) => {
-  const newProject = {name:project,deadline:deadline,done:false};
+  const newProject = {name:project,deadline:deadline,done:false,messages:[]};
 
   const res = await fetch('http://localhost:5000/projects',{
     method:'POST',
@@ -124,11 +124,55 @@ const removeProject = async (id) => {
   setProjects(projects.map(project => project.id === id ? {...project,done:data.done} : project))
  }
 
+  // Update project messages
+  const updMessages = async (id,message) => {
+    const projectToUpdate = await fetchProject(id);
+    console.log(id);
+    console.log(message);
+    console.log(projectToUpdate)
+    const updatedProject = {...projectToUpdate,messages:[...projectToUpdate.messages,message]};
+    console.log("updated ",updatedProject)
+    const res = await fetch(`http://localhost:5000/projects/${id}`,{
+      method:'PUT',
+      headers:{'Content-type':'application/json'},
+      body:JSON.stringify(updatedProject)
+    })
+    const data = await res.json();
+    console.log("Data ",data);
+    const {messages}= data 
+
+    console.log(message);
+    console.log(data);
+ 
+   setProjects(projects.map(project => project.id === id ? {...project,messages: messages} : project))
+  }
+
+  const updMessageCounts = async (id) => {
+    const projectToUpdate = await fetchProject(id);
+    const updData = {...projectToUpdate,messageCounts:projectToUpdate.messageCounts + 1};
+    const res = await fetch(`http://localhost:5000/projects/${id}`,{
+      method:'PUT',
+      headers:{
+        'Content-type':'application/json'
+      },
+      body:JSON.stringify(updData)
+    })
+    const data = await res.json();
+    setProjects(projects.map(project => project.id === id ? {...project,messageCounts:data.messageCounts} : project))
+  }
+
   return (
     <div className="container">
-      <Header toggleForm={toggleForm} showForm={showForm}/>
-      <AddProject showForm={showForm} addProject={addProject}/>
-      {projects.length > 0 ? <Projects projects={projects} onRemove={removeProject} onUpdate={updStatus} updLoveCounts={updLoveCounts} updHateCounts={updHateCounts}/> : <h3 style={{textAlign:'center'}}>No projects to display.Please add.</h3>}
+      <Route path='/' exact>
+          <Header toggleForm={toggleForm} showForm={showForm}/>
+          <AddProject showForm={showForm} addProject={addProject}/>
+          {projects.length > 0 ? <Projects projects={projects} onRemove={removeProject} onUpdate={updStatus} updLoveCounts={updLoveCounts} updHateCounts={updHateCounts}/> : <h3 style={{textAlign:'center'}}>No projects to display.Please add.</h3>}
+      </Route>
+      
+      <Route path='/about' exact component={About}/> 
+      <Route path='/projectTrack/:id' exact   >
+      <MessageProject updMessages={updMessages} fetchProject={fetchProject} projects={projects} updMessageCounts={updMessageCounts} />
+      </Route>
     </div>
   )
 }

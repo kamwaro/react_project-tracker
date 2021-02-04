@@ -1,36 +1,36 @@
 {
   "projects": [
     {
-      "id": 1,
-      "name": "Build 10 micro react apps in 2 days",
-      "deadline": "By Feb 7th 2020",
-      "done": true,
-      "loveCounts": 8,
-      "hateCounts": 8
-    },
-    {
       "id": 3,
       "name": "Build a portfolio",
       "deadline": "By Feb 28th 2020",
       "done": false,
-      "loveCounts": 0,
-      "hateCounts": 0
+      "loveCounts": 9,
+      "hateCounts": 5,
+      "messages": [
+        "THis is what debugging is!"
+      ],
+      "messageCounts": 15
     },
     {
       "id": 4,
       "name": "Get a job",
       "deadline": "By March 30th 2020",
       "done": false,
-      "loveCounts": 0,
-      "hateCounts": 0
+      "loveCounts": 1,
+      "hateCounts": 0,
+      "messages": [],
+      "messageCounts": 0
     },
     {
       "name": "Practice Async Await",
       "deadline": "By Feb 5th 2020",
       "done": true,
       "id": 5,
-      "loveCounts": 0,
-      "hateCounts": 0
+      "loveCounts": 16,
+      "hateCounts": 0,
+      "messages": [],
+      "messageCounts": 0
     },
     {
       "name": "Learn how to use a tooltip",
@@ -38,7 +38,9 @@
       "done": false,
       "id": 6,
       "loveCounts": 0,
-      "hateCounts": 0
+      "hateCounts": 3,
+      "messages": [],
+      "messageCounts": 0
     },
     {
       "name": "Add pagination to the next project",
@@ -46,23 +48,29 @@
       "done": false,
       "id": 7,
       "loveCounts": 0,
-      "hateCounts": 0
+      "hateCounts": 0,
+      "messages": [],
+      "messageCounts": 0
     },
     {
       "name": "Start learning Redux",
       "deadline": "By Feb 10th 2020",
       "done": false,
       "id": 8,
-      "loveCounts": 0,
-      "hateCounts": 0
+      "loveCounts": 29,
+      "hateCounts": 0,
+      "messages": [],
+      "messageCounts": 0
     },
     {
       "name": "Master React Routing",
       "deadline": "By Feb 3rd 2021",
-      "done": false,
+      "done": true,
       "id": 9,
-      "loveCounts": 0,
-      "hateCounts": 0
+      "loveCounts": 30,
+      "hateCounts": 0,
+      "messages": [],
+      "messageCounts": 0
     },
     {
       "name": "Add Comments feature",
@@ -70,7 +78,125 @@
       "done": false,
       "id": 10,
       "loveCounts": 0,
-      "hateCounts": 0
+      "hateCounts": 0,
+      "messages": [],
+      "messageCounts": 0
+    },
+    {
+      "name": "Master React Routing",
+      "deadline": "By Feb 3rd 2021",
+      "done": false,
+      "id": 11,
+      "loveCounts": 18,
+      "messages": [],
+      "messageCounts": 0
+    },
+    {
+      "0": {
+        "id": 3,
+        "name": "Build a portfolio",
+        "deadline": "By Feb 28th 2020",
+        "done": false,
+        "loveCounts": 9,
+        "hateCounts": 5,
+        "messages": [
+          "THis is what debugging is!"
+        ],
+        "messageCounts": 15
+      },
+      "1": {
+        "id": 4,
+        "name": "Get a job",
+        "deadline": "By March 30th 2020",
+        "done": false,
+        "loveCounts": 1,
+        "hateCounts": 0,
+        "messages": [],
+        "messageCounts": 0
+      },
+      "2": {
+        "name": "Practice Async Await",
+        "deadline": "By Feb 5th 2020",
+        "done": true,
+        "id": 5,
+        "loveCounts": 16,
+        "hateCounts": 0,
+        "messages": [],
+        "messageCounts": 0
+      },
+      "3": {
+        "name": "Learn how to use a tooltip",
+        "deadline": "In 30 minutes",
+        "done": false,
+        "id": 6,
+        "loveCounts": 0,
+        "hateCounts": 3,
+        "messages": [],
+        "messageCounts": 0
+      },
+      "4": {
+        "name": "Add pagination to the next project",
+        "deadline": "By Friday ",
+        "done": false,
+        "id": 7,
+        "loveCounts": 0,
+        "hateCounts": 0,
+        "messages": [],
+        "messageCounts": 0
+      },
+      "5": {
+        "name": "Start learning Redux",
+        "deadline": "By Feb 10th 2020",
+        "done": false,
+        "id": 8,
+        "loveCounts": 29,
+        "hateCounts": 0,
+        "messages": [],
+        "messageCounts": 0
+      },
+      "6": {
+        "name": "Master React Routing",
+        "deadline": "By Feb 3rd 2021",
+        "done": true,
+        "id": 9,
+        "loveCounts": 30,
+        "hateCounts": 0,
+        "messages": [],
+        "messageCounts": 0
+      },
+      "7": {
+        "name": "Add Comments feature",
+        "deadline": "By Feb 4th",
+        "done": false,
+        "id": 10,
+        "loveCounts": 0,
+        "hateCounts": 0,
+        "messages": [],
+        "messageCounts": 0
+      },
+      "8": {
+        "name": "Master React Routing",
+        "deadline": "By Feb 3rd 2021",
+        "done": false,
+        "id": 11,
+        "loveCounts": 18,
+        "messages": [],
+        "messageCounts": 0
+      },
+      "9": {
+        "name": "Some",
+        "deadline": "tomorrow",
+        "done": false,
+        "messages": [
+          "Put it in"
+        ],
+        "id": 12,
+        "messageCounts": 15,
+        "loveCounts": 1,
+        "hateCounts": 1
+      },
+      "messageCounts": null,
+      "id": 12
     }
   ]
 }

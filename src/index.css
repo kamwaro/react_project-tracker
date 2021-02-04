@@ -1,11 +1,16 @@
 @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@200&display=swap');
 
+html{
+    height: 100vh;
+}
+
 body{
 box-sizing: border-box;
 margin: 0;
 padding: 0;
 background-color:#000;
 font-family: 'Nunito', sans-serif;
+height: 100vh;
 }
 
 .container{
@@ -15,6 +20,7 @@ font-family: 'Nunito', sans-serif;
     margin:20px auto;
     padding: 1em 2em;
     border-radius: 5px;
+    height: 100%;
     
 }
 .header{
@@ -23,6 +29,28 @@ font-family: 'Nunito', sans-serif;
     align-items: center;
     font-family: 'Nunito', sans-serif;
     color: black; 
+}
+
+.header_title{
+    text-decoration: none;
+    color: #000;
+}
+
+.about{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.link{
+    text-decoration: none;
+    color: #000;
+    border-bottom: 0px solid #000;
+}
+
+.link:hover{
+    border-bottom: 2px solid #000;
+
 }
 
 .btn{
@@ -61,7 +89,7 @@ font-family: 'Nunito', sans-serif;
     color: #000;
     font-family: inherit;
     position: relative;
-    line-height: 0.5;
+    line-height: 0.9;
 
     margin-bottom:.5em;
     padding: .3em;
@@ -70,7 +98,7 @@ font-family: 'Nunito', sans-serif;
 
 
 .project:hover{
-    background-color: black;
+    background-color: rgb(189, 189, 189);
     color: #fff;
     cursor: pointer;
 }
@@ -136,7 +164,7 @@ font-size: 1rem;
 .likehateBtn{
     position:'relative';
     padding:'9px';
-    margin-right: 10px;
+    margin-right: 1.2em;
 }
 
 .loveCounts{
@@ -147,9 +175,69 @@ font-size: 1rem;
 }
 .heartBtn{
   border: none;
+  border-radius: 50%;
 }
 .hateCounts{
     color:'red';
     font-size:'0.8rem';
     position:'absolute';
+}
+
+.aboutStyles{
+    height:100%;
+}
+
+.tag{
+    margin-left: 1em;
+    border: none;
+    border-radius: 50%;
+}
+
+.comment{
+    font-size: 1em;
+}
+
+.form{
+    width: 100%;
+}
+
+
+.messageBox{
+    width: 98%;
+    border-radius: 3px;
+    min-height: 9em;
+    padding: 1em 0.5em;
+}
+
+.addMessageBtn{
+    padding: 0;
+    margin: 0;
+    width:100%;
+    text-align: right;
+}
+
+.messageBoxBtn{
+    border: none;
+    outline: none;
+    border: 2px solid #000;
+    border-radius: 3px;
+    padding: .6em 1em;
+}
+
+.messageBoxBtn:hover{
+    background-color: green;
+}
+
+.message{
+    list-style-type: none;
+    border: 2px solid #000;
+    background-color: #000;
+    color: #fff;
+    border-radius: 2px;
+    margin-bottom: .3em;
+}
+
+.messageHead{
+    text-transform: uppercase;
+    font-size: 1rem;
 }
