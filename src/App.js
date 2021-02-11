@@ -25,7 +25,7 @@ useEffect(() => {
 
 // fetch projects
 const fetchProjects = async () => {
-  const res = await fetch('http://localhost:5000/projects');
+  const res = await fetch('http://localhost:5001/projects');
   const data = await res.json();
 
   return data
@@ -33,9 +33,8 @@ const fetchProjects = async () => {
 
 // fetch project
 const fetchProject = async (id) => {
-// const res = await fetch(`http://localhost:5000/projects/${id}`)
-// const data = await res.json()
-const data =projects
+const res = await fetch(`http://localhost:5001/projects/${id}`)
+const data = await res.json()
 return data;
 }
 
@@ -44,9 +43,9 @@ return data;
 
 // Add project
 const addProject = async (project,deadline) => {
-  const newProject = {name:project,deadline:deadline,done:false,messages:[]};
+  const newProject = {name:project,deadline:deadline,done:false};
 
-  const res = await fetch('http://localhost:5000/projects',{
+  const res = await fetch('http://localhost:5001/projects',{
     method:'POST',
     headers:{'Content-type':'application/json'},
     body:JSON.stringify(newProject)
@@ -73,7 +72,7 @@ const toggleForm = () => {
 const updLoveCounts = async (id) => {
   const projectToUpdate = await fetchProject(id);
   const updData = {...projectToUpdate,loveCounts:projectToUpdate.loveCounts + 1};
-  const res = await fetch(`http://localhost:5000/projects/${id}`,{
+  const res = await fetch(`http://localhost:5001/projects/${id}`,{
     method:'PUT',
     headers:{
       'Content-type':'application/json'
@@ -89,7 +88,7 @@ const updLoveCounts = async (id) => {
 const updHateCounts = async (id) => {
   const projectToUpdate = await fetchProject(id);
   const updData = {...projectToUpdate,hateCounts:projectToUpdate.hateCounts + 1};
-  const res = await fetch(`http://localhost:5000/projects/${id}`,{
+  const res = await fetch(`http://localhost:5001/projects/${id}`,{
     method:'PUT',
     headers:{
       'Content-type':'application/json'
@@ -102,7 +101,7 @@ const updHateCounts = async (id) => {
 
 // Remove project
 const removeProject = async (id) => {
-  await fetch(`http://localhost:5000/projects/${id}`,{
+  await fetch(`http://localhost:5001/projects/${id}`,{
       method:'DELETE'
     })
   setProjects(projects.filter(project => project.id !== id ));
@@ -114,7 +113,7 @@ const removeProject = async (id) => {
  const updStatus = async (id) => {
    const projectToUpdate = await fetchProject(id);
    const updatedProject = {...projectToUpdate,done:!projectToUpdate.done};
-   const res = await fetch(`http://localhost:5000/projects/${id}`,{
+   const res = await fetch(`http://localhost:5001/projects/${id}`,{
      method:'PUT',
      headers:{'Content-type':'application/json'},
      body:JSON.stringify(updatedProject)
@@ -126,13 +125,13 @@ const removeProject = async (id) => {
 
   // Update project messages
   const updMessages = async (id,message) => {
-    const projectToUpdate = await fetchProject(id);
+     let projectToUpdate = await fetchProject(id);
     console.log(id);
     console.log(message);
     console.log(projectToUpdate)
     const updatedProject = {...projectToUpdate,messages:[...projectToUpdate.messages,message]};
     console.log("updated ",updatedProject)
-    const res = await fetch(`http://localhost:5000/projects/${id}`,{
+    const res = await fetch(`http://localhost:5001/projects/${id}`,{
       method:'PUT',
       headers:{'Content-type':'application/json'},
       body:JSON.stringify(updatedProject)
@@ -150,7 +149,7 @@ const removeProject = async (id) => {
   const updMessageCounts = async (id) => {
     const projectToUpdate = await fetchProject(id);
     const updData = {...projectToUpdate,messageCounts:projectToUpdate.messageCounts + 1};
-    const res = await fetch(`http://localhost:5000/projects/${id}`,{
+    const res = await fetch(`http://localhost:5001/projects/${id}`,{
       method:'PUT',
       headers:{
         'Content-type':'application/json'
