@@ -7,6 +7,7 @@ import MessageProject from './Components/MessageProject'
 import {Route} from 'react-router-dom';
 import About from './Components/About'
 
+
 const App = () => {
 
 const [projects, setProjects] = useState([])
@@ -25,7 +26,7 @@ useEffect(() => {
 
 // fetch projects
 const fetchProjects = async () => {
-  const res = await fetch('http://localhost:5001/projects');
+  const res = await fetch('http://localhost:4000/project');
   const data = await res.json();
 
   return data
@@ -33,19 +34,32 @@ const fetchProjects = async () => {
 
 // fetch project
 const fetchProject = async (id) => {
-const res = await fetch(`http://localhost:5001/projects/${id}`)
+const res = await fetch(`http://localhost:4000/project/${id}`)
 const data = await res.json()
 return data;
 }
 
+// id: req.body.id,
+//             name: req.body.name,
+//             deadline: req.body.deadline,
+//             done: req.body.done,
+//             loveCounts: req.body.loveCounts,
+//             hateCounts: req.body.hateCounts,
+//             messages:   [{
+//             message: req.body.messages[0].message
+//                         }      
+//                         ],
+//             messageCounts: req.body.messageCounts
 
 
 
 // Add project
 const addProject = async (project,deadline) => {
-  const newProject = {name:project,deadline:deadline,done:false};
 
-  const res = await fetch('http://localhost:5001/projects',{
+    const id = Math.floor(Math.random() * 1000) + 1;
+  const newProject = {id:id,name:project,deadline:deadline,done:false,loveCounts:0,hateCounts:0,messages:[{message:null}],messageCounts:0};
+
+  const res = await fetch('http://localhost:4000/Project',{
     method:'POST',
     headers:{'Content-type':'application/json'},
     body:JSON.stringify(newProject)
@@ -70,10 +84,15 @@ const toggleForm = () => {
 // Update love Counts;
 
 const updLoveCounts = async (id) => {
-  const projectToUpdate = await fetchProject(id);
+  let projectToUpdate = await fetchProject(id);
+  console.log(projectToUpdate);
+  projectToUpdate = projectToUpdate[0];
+  console.log(projectToUpdate)
+
   const updData = {...projectToUpdate,loveCounts:projectToUpdate.loveCounts + 1};
-  const res = await fetch(`http://localhost:5001/projects/${id}`,{
-    method:'PUT',
+  console.log(updData)
+  const res = await fetch(`http://localhost:4000/projects/lovecounts/${id}`,{
+    method:'PATCH',
     headers:{
       'Content-type':'application/json'
     },
@@ -86,10 +105,12 @@ const updLoveCounts = async (id) => {
 // Update hate Counts;
 
 const updHateCounts = async (id) => {
-  const projectToUpdate = await fetchProject(id);
+  console.log(id)
+  let projectToUpdate = await fetchProject(id);
+  projectToUpdate = projectToUpdate[0];
   const updData = {...projectToUpdate,hateCounts:projectToUpdate.hateCounts + 1};
-  const res = await fetch(`http://localhost:5001/projects/${id}`,{
-    method:'PUT',
+  const res = await fetch(`http://localhost:4000/projects/hatecounts/${id}`,{
+    method:'PATCH',
     headers:{
       'Content-type':'application/json'
     },
@@ -101,7 +122,7 @@ const updHateCounts = async (id) => {
 
 // Remove project
 const removeProject = async (id) => {
-  await fetch(`http://localhost:5001/projects/${id}`,{
+  await fetch(`http://localhost:4000/projects/${id}`,{
       method:'DELETE'
     })
   setProjects(projects.filter(project => project.id !== id ));

@@ -21,7 +21,6 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "serve": "json-server --watch db.json --port 5001",
     "server":"nodemon server.js",
     "build": "react-scripts build",
     "test": "react-scripts test",

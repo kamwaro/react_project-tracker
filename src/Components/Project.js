@@ -1,4 +1,4 @@
-import {Link} from 'react-router-dom'
+import {Link} from 'react-router-dom';
 import { FaTimes ,FaHandMiddleFinger,FaHeart,FaCommentAlt} from 'react-icons/fa';
 
 
@@ -20,7 +20,7 @@ const Project = ({project, onRemove,onUpdate,updLoveCounts,updHateCounts}) => {
                
                <div >
                <span className='likehateBtn'>
-               <button className='heartBtn' onClick={() => updLoveCounts(id) }>{<FaHeart />}</button>
+               <button className='heartBtn' style={{color:loveCounts > 0 ? 'red': ''}} onClick={() => updLoveCounts(id) }>{<FaHeart />}</button>
                <span className='loveCounts' style={{position:'absolute',color:'green',fontSize:'0.8rem'}}>{loveCounts}</span>
                </span>
                <span  className='hateCounts' >

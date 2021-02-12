@@ -30,7 +30,7 @@ const MessageProject = ({ updMessages, updMessageCounts,projects}) => {
         return () => {
             console.log('Component will unmount!!');
         }
-    },[id,projects]);
+    },[id,projects,messages]);
 
   
     const onSubmit = (e) => {

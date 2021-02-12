@@ -1,5 +1,4 @@
 const mongoose = require('mongoose');
-const { default: Project } = require('../src/Components/Project');
 
 const Schema = mongoose.Schema;
 
